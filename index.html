@@ -152,6 +152,10 @@ function displayOutput2() {
            		vid.pause();
            		document.getElementById("expression").innerHTML = "Type the following statement: 'I should not waste my time, get back to work now'";
            		document.getElementById("q2").style.visibility = "hidden";
+           		document.getElementById("q1").style.visibility = "hidden";
+           		document.getElementById("q2").style.visibility = "hidden";
+           		document.getElementById("result").style.visibility = "hidden";
+           		document.getElementById("expression").style.visibility = "hidden";
            	}
            	else
            	{
@@ -183,20 +187,21 @@ function display()
 Your browser does not support the audio element.
 </audio>
 
+
+</form>
+<div id="aft">
 <div id="q1" >
- <input type="text" id="userInput" autofocus value = "Enter some text here ..."/>
+ <input type="text" id="userInput" />
  <button type="button" id="submit1" onclick="display()">Submit</button>
 </div>
 
 <div id="q2">
- <input type="text" id="userInput2" autofocus value = "Enter some text here ..."/>
+ <input type="text" id="userInput2"/>
  <button type="button" id="submit2" onclick="displayOutput2()">Submit</button>
 </div>
 <span id="result"></span>
-
-</form>
-
-
+<div id="expression"></div>
+</div>
 <script type="text/javascript">
 
 jsalarm.init()
@@ -205,7 +210,7 @@ jsalarm.init()
 
 
 <!--<button type="button" onclick="myFunction()">Submit</button>-->
-<span id="expression"></span>
+
 <!--<p id="demo"></p>-->
 
 <script>

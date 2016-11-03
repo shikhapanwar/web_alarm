@@ -1,11 +1,11 @@
-/*body {
-   /* background: url(clock.jpg) no-repeat center center fixed;
+body {
+  background: url(clock.jpg) no-repeat center center fixed;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
         
 }  
-*/
+
 
 #q1{
 visibility: hidden;
@@ -14,37 +14,54 @@ visibility: hidden;
 #q2{
 visibility: hidden;
 }
-/*
+
+#aft{
+	position: relative;
+	top: 100px;
+	left: -50%;
+	width: 200%;
+	height: 200px;
+}
 #jsalarmclock{
 	position: absolute;
-	background-color: white;
 	top: 80px;
     left: 40%;
 font-family: Tahoma;
 font-weight: bold;
-font-size: 12px;
+font-size: 10px;
 }
 
-#jsalarmclock2{
+
+#q1{
 	position: absolute;
-	background-color: blue;
-	top: 100px;
-    left: 40%;
-font-family: Tahoma;
-font-weight: bold;
-font-size: 12px;
+	top: 50%;
+    left: 30%;
 }
 
-#jsalarmclock3{
+#q2{
 	position: absolute;
-	background-color: green;
-	top: 110px;
-    left: 40%;
-font-family: Tahoma;
-font-weight: bold;
-font-size: 12px;
+	top: 50%;
+    left: 30%;
 }
-*/
+
+#expression{
+	  text-align: center;
+
+	position: absolute;
+	top: 20%;
+    left: 0%;
+    width:120%;
+    font-size: 20px;
+}
+
+#result{
+	position: absolute;
+	top: 50%;
+    left: 75%;
+    font-size: 10px;
+}
+
+
 /*
 #jsalarmclock{
 	position: absolute;
