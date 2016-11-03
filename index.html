@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src = "jquery-1.12.4.js"></script>
+<link rel="stylesheet" type="text/css" href="alarm.css">
+<style type="text/css">
+
+#jsalarmclock{
+font-family: Tahoma;
+font-weight: bold;
+font-size: 12px;
+}
+
+#jsalarmclock div{
+margin-bottom: 0.8em;
+}
+
+#jsalarmclock div.leftcolumn{
+float: left;
+width: 150px;
+font-size: 13px;
+background-color: lightyellow;
+clear: left;
+}
+
+#jsalarmclock span{
+margin-right: 5px;
+}
+
+</style>
+
+<script type="text/javascript">
+var a, b, c;
+
+var jsalarm={
+	padfield:function(f){
+		return (f<10)? "0"+f : f
+	},
+	showcurrenttime:function(){
+		var dateobj=new Date()
+		var ct=this.padfield(dateobj.getHours())+":"+this.padfield(dateobj.getMinutes())+":"+this.padfield(dateobj.getSeconds())
+		this.ctref.innerHTML=ct
+		this.ctref.setAttribute("title", ct)
+		if (typeof this.hourwake!="undefined"){ //if alarm is set
+			if (this.ctref.title==(this.hourwake+":"+this.minutewake+":"+this.secondwake)){
+				clearInterval(jsalarm.timer)
+				        var vid = document.getElementById("alarm"); 
+							vid.play();
+							var x, text;
+    a= Math.floor(Math.random() * 100);
+	b = Math.floor(Math.random() * 100);  
+	c = Math.floor(Math.random() * 100); 
+	txt = "("+a +"*"+ b+") + "+c; 
+	document.getElementById("expression").innerHTML = txt;
+	document.getElementById("q1").style.visibility = "visible";
+
+/*
+    // Get the value of the input field with id="numb"
+    x = document.getElementById("numb").value;
+
+    // If x is Not a Number or less than one or greater than 10
+    if (isNaN(x) || x != (a*b)+c ) {
+        text = "Input not valid";
+    } else {
+        text = "Input OK";
+    }
+    document.getElementById("demo").innerHTML = text;
+*/			
+	
+			}
+		}
+	},
+	init:function(){
+		var dateobj=new Date()
+		this.ctref=document.getElementById("jsalarm_ct")
+		this.submitref=document.getElementById("submitbutton")
+		this.submitref.onclick=function(){
+			jsalarm.setalarm()
+			this.value="Alarm Set"
+			this.disabled=true
+			return false
+		}
+		this.resetref=document.getElementById("resetbutton")
+		this.resetref.onclick=function(){
+		jsalarm.submitref.disabled=false
+		jsalarm.hourwake=undefined
+		jsalarm.hourselect.disabled=false
+		jsalarm.minuteselect.disabled=false
+		jsalarm.secondselect.disabled=false
+		return false
+		}
+		var selections=document.getElementsByTagName("select")
+		this.hourselect=selections[0]
+		this.minuteselect=selections[1]
+		this.secondselect=selections[2]
+		for (var i=0; i<60; i++){
+			if (i<24) //If still within range of hours field: 0-23
+			this.hourselect[i]=new Option(this.padfield(i), this.padfield(i), false, dateobj.getHours()==i)
+			this.minuteselect[i]=new Option(this.padfield(i), this.padfield(i), false, dateobj.getMinutes()==i)
+			this.secondselect[i]=new Option(this.padfield(i), this.padfield(i), false, dateobj.getSeconds()==i)
+
+		}
+		jsalarm.showcurrenttime()
+		jsalarm.timer=setInterval(function(){jsalarm.showcurrenttime()}, 1000)
+	},
+	setalarm:function(){
+		this.hourwake=this.hourselect.options[this.hourselect.selectedIndex].value
+		this.minutewake=this.minuteselect.options[this.minuteselect.selectedIndex].value
+		this.secondwake=this.secondselect.options[this.secondselect.selectedIndex].value
+		this.hourselect.disabled=true
+		this.minuteselect.disabled=true
+		this.secondselect.disabled=true
+		}
+}
+
+var cnt =0;
+function displayOutput() {
+			
+            var input = document.getElementById("userInput").value;
+            var vid = document.getElementById("alarm");
+            
+            if(input ==(a*b)+c )
+            {
+           		document.getElementById("result").innerHTML = "Answer correct";
+           		
+           		document.getElementById("expression").innerHTML = "Type the following statement: 'I should not waste my time, get back to work now'";
+           		cnt++;
+           		document.getElementById("userInput").value="";
+           		document.getElementById("q1").style.visibility = "hidden";
+           		document.getElementById("q2").style.visibility = "visible";
+
+
+           	}
+           	else
+           	{
+           		document.getElementById("result").innerHTML = "Incorrect answer";
+           	}
+        }
+
+
+function displayOutput2() {
+            var input = document.getElementById("userInput2").value;
+            var vid = document.getElementById("alarm");
+            if (input.length === 0) {
+                alert("Please enter a valid input");
+                return;
+            }
+            str = "I should not waste my time, get back to work now";
+            if(input.localeCompare(str)==0)
+            {
+           		document.getElementById("result").innerHTML = "Answer correct";
+           		vid.pause();
+           		document.getElementById("expression").innerHTML = "Type the following statement: 'I should not waste my time, get back to work now'";
+           		document.getElementById("q2").style.visibility = "hidden";
+           	}
+           	else
+           	{
+           		document.getElementById("result").innerHTML = "Incorrect answer";
+           	}
+        }
+function display()
+{
+	displayOutput();
+	
+}
+</script>
+
+</head>
+
+
+<body>
+
+<form action="" method="">
+<div id="jsalarmclock">
+<div><div class="leftcolumn">Current Time:</div> <span id="jsalarm_ct" style="letter-spacing: 2px"></span></div>
+<div><div class="leftcolumn">Set Alarm:</div> <span><select></select> Hour</span> <span><select></select> Minutes</span> <span><select></select> Seconds</span></div>
+<input type="submit" value="Set Alarm!" id="submitbutton" /> <input type="reset" value="reset" id="resetbutton" />
+
+
+<audio id = "alarm" loop>
+  <source src="audio.ogg" type="audio/ogg">
+  <source src="audio.mp3" type="audio/mpeg">
+Your browser does not support the audio element.
+</audio>
+
+<div id="q1" >
+ <input type="text" id="userInput" autofocus value = "Enter some text here ..."/>
+ <button type="button" id="submit1" onclick="display()">Submit</button>
+</div>
+
+<div id="q2">
+ <input type="text" id="userInput2" autofocus value = "Enter some text here ..."/>
+ <button type="button" id="submit2" onclick="displayOutput2()">Submit</button>
+</div>
+<span id="result"></span>
+
+</form>
+
+
+<script type="text/javascript">
+
+jsalarm.init()
+
+</script>
+
+
+<!--<button type="button" onclick="myFunction()">Submit</button>-->
+<span id="expression"></span>
+<!--<p id="demo"></p>-->
+
+<script>
+function myFunction() {
+    }
+</script>
+
+
+</body>
+</html>

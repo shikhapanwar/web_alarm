@@ -1,0 +1,73 @@
+/*body {
+   /* background: url(clock.jpg) no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        
+}  
+*/
+
+#q1{
+visibility: hidden;
+}
+
+#q2{
+visibility: hidden;
+}
+/*
+#jsalarmclock{
+	position: absolute;
+	background-color: white;
+	top: 80px;
+    left: 40%;
+font-family: Tahoma;
+font-weight: bold;
+font-size: 12px;
+}
+
+#jsalarmclock2{
+	position: absolute;
+	background-color: blue;
+	top: 100px;
+    left: 40%;
+font-family: Tahoma;
+font-weight: bold;
+font-size: 12px;
+}
+
+#jsalarmclock3{
+	position: absolute;
+	background-color: green;
+	top: 110px;
+    left: 40%;
+font-family: Tahoma;
+font-weight: bold;
+font-size: 12px;
+}
+*/
+/*
+#jsalarmclock{
+	position: absolute;
+	width: 400px;
+    height: 200px;
+font-family: Tahoma;
+font-weight: bold;
+font-size: 12px;
+}
+
+#jsalarmclock div{
+margin-bottom: 0.8em;
+}
+
+#jsalarmclock div.leftcolumn{
+float: left;
+width: 150px;
+font-size: 13px;
+background-color: lightyellow;
+clear: left;
+}
+
+#jsalarmclock span{
+margin-right: 5px;
+}
+*/
